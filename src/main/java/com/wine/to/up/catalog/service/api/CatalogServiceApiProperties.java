@@ -19,5 +19,5 @@ import org.springframework.stereotype.Component;
 public class CatalogServiceApiProperties {
     private String host;
 
-    private NotificationServiceMessage notificationTopic;
+    private String notificationTopic;
 }
