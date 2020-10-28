@@ -1,5 +1,6 @@
 package com.wine.to.up.catalog.service.api;
 
+import com.wine.to.up.catalog.service.api.domain.NotificationServiceMessage;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -17,4 +18,6 @@ import org.springframework.stereotype.Component;
 @Getter
 public class CatalogServiceApiProperties {
     private String host;
+
+    private String notificationTopic;
 }
