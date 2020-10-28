@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-public class NotificationServiceMessage {
+public class UpdatePriceEvent {
     private String id;
 
     private String name;
