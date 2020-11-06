@@ -6,7 +6,7 @@ option java_package = "com.wine.to.up.catalog.service.api.message";
 import "kafka_message_header.proto";
 
 //event that indicates that message was sent to kafka
-message UpdateWinePositionMessageSentEvent {
+message UpdatePriceMessageSentEvent {
   string id = 1;
   string name = 2;
   double price = 3;
