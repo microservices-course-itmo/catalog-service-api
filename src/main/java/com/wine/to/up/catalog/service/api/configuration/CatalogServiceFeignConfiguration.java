@@ -1,8 +1,8 @@
 //TODO create-service: move ALL classes (not only this one) to correct package. F.e. for order-service-api all classes should be in "com.wine.to.up.order.service.api.*"
-package com.wine.to.up.demo.service.api.configuration;
+package com.wine.to.up.catalog.service.api.configuration;
 
-import com.wine.to.up.demo.service.api.DemoServiceApiProperties;
-import com.wine.to.up.demo.service.api.feign.DemoServiceClient;
+import com.wine.to.up.catalog.service.api.CatalogServiceApiProperties;
+import com.wine.to.up.catalog.service.api.feign.CatalogServiceClient;
 import feign.Feign;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
@@ -12,25 +12,25 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Feign client for accessing demo service
+ * Feign client for accessing catalog service
  */
 @SuppressWarnings("SpringFacetCodeInspection")
 @Configuration
 @RequiredArgsConstructor
 //TODO create-service: rename
-public class DemoServiceFeignConfiguration {
-    private final DemoServiceApiProperties demoServiceApiProperties;
+public class CatalogServiceFeignConfiguration {
+    private final CatalogServiceApiProperties catalogServiceApiProperties;
 
     /**
      * Configured feign client
      */
     //TODO create-service: do not forget to change bean name (method name)
     @Bean
-    public DemoServiceClient getKafkaServiceClient() {
+    public CatalogServiceClient getKafkaServiceClient() {
         return Feign.builder()
                 .encoder(new GsonEncoder())
                 .decoder(new GsonDecoder())
                 .client(new OkHttpClient())
-                .target(DemoServiceClient.class, "http://" + demoServiceApiProperties.getHost());
+                .target(CatalogServiceClient.class, "http://" + catalogServiceApiProperties.getHost());
     }
 }

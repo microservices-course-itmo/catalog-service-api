@@ -8,9 +8,9 @@
  * conditions of the License Agreement under which it is provided by or on behalf
  * of Andrsuh INC.
  */
-package com.wine.to.up.demo.service.api.service;
+package com.wine.to.up.catalog.service.api.service;
 
-import com.wine.to.up.demo.service.api.dto.DemoServiceMessage;
+import com.wine.to.up.catalog.service.api.dto.CatalogServiceMessage;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import java.util.List;
  * Defines an interface for communicating with kafka
  */
 //TODO create-service: rename to reflect your endpoints meaning
-public interface DemoService {
+public interface CatalogService {
     /**
      * Sends message to kafka topic
      *
@@ -31,7 +31,7 @@ public interface DemoService {
      *
      * @param messageWithHeaders message with headers
      */
-    void sendMessageWithHeaders(DemoServiceMessage messageWithHeaders);
+    void sendMessageWithHeaders(CatalogServiceMessage messageWithHeaders);
 
     /**
      * Get district message content from DB

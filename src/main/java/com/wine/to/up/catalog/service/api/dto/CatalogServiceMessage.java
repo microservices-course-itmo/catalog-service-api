@@ -8,7 +8,7 @@
  * conditions of the License Agreement under which it is provided by or on behalf
  * of Andrsuh INC.
  */
-package com.wine.to.up.demo.service.api.dto;
+package com.wine.to.up.catalog.service.api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,13 +19,13 @@ import javax.validation.constraints.NotNull;
 import java.util.Map;
 
 /**
- * Message in format of demo service
+ * Message in format of catalog service
  */
 @NoArgsConstructor
 @Getter
 @Setter
 @AllArgsConstructor
-public class DemoServiceMessage {
+public class CatalogServiceMessage {
     @NotNull
     private Map<String, byte[]> headers;
     @NotNull

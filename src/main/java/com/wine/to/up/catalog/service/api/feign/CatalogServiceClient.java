@@ -8,10 +8,10 @@
  * conditions of the License Agreement under which it is provided by or on behalf
  * of Andrsuh INC.
  */
-package com.wine.to.up.demo.service.api.feign;
+package com.wine.to.up.catalog.service.api.feign;
 
-import com.wine.to.up.demo.service.api.dto.DemoServiceMessage;
-import com.wine.to.up.demo.service.api.service.DemoService;
+import com.wine.to.up.catalog.service.api.dto.CatalogServiceMessage;
+import com.wine.to.up.catalog.service.api.service.CatalogService;
 import feign.Headers;
 import feign.RequestLine;
 
@@ -26,7 +26,7 @@ import java.util.List;
  * the name of the service and request will be redirected to the particular instance.
  */
 //TODO create-service: rename to reflect your endpoints meaning
-public interface DemoServiceClient extends DemoService {
+public interface CatalogServiceClient extends CatalogService {
     /**
      * {@inheritDoc}
      */
@@ -39,7 +39,7 @@ public interface DemoServiceClient extends DemoService {
      */
     @RequestLine(value = "POST /kafka/send/headers")
     @Headers("Content-Type: application/json")
-    void sendMessageWithHeaders(DemoServiceMessage messageWithHeaders);
+    void sendMessageWithHeaders(CatalogServiceMessage messageWithHeaders);
 
     /**
      * {@inheritDoc}

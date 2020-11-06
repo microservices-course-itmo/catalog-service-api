@@ -1,4 +1,4 @@
-package com.wine.to.up.demo.service.api;
+package com.wine.to.up.catalog.service.api;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,16 +13,16 @@ import org.springframework.stereotype.Component;
 @SuppressWarnings("SpringPropertySource")
 //TODO create-service: change properties sources
 @PropertySources({
-        @PropertySource("classpath:application-demo-service-api.properties"),
-        @PropertySource("classpath:application-demo-service-api-${spring.profiles.active:local}.properties")
+        @PropertySource("classpath:application-catalog-service-api.properties"),
+        @PropertySource("classpath:application-catalog-service-api-${spring.profiles.active:local}.properties")
 })
 //TODO create-service: change prefix (from your properties file)
-@ConfigurationProperties(prefix = "demo.service.api")
+@ConfigurationProperties(prefix = "catalog.service.api")
 @Setter
 @Component
 @Getter
 //TODO create-service: rename
-public class DemoServiceApiProperties {
+public class CatalogServiceApiProperties {
     private String messageSentEventsTopicName;
     private String host;
 }
