@@ -25,4 +25,6 @@ import org.springframework.stereotype.Component;
 public class CatalogServiceApiProperties {
     private String messageSentEventsTopicName;
     private String host;
+
+    private String eventTopic;
 }
