@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_package = "com.wine.to.up.demo.service.api.message";
+
+import "update_wine.proto";
+
+//event that indicates that message was sent to kafka
+message UpdateWineEvent {
+  string wineId = 1;
+  string wineName = 2;
+}
