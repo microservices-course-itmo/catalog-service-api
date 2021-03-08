@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option java_package = "com.wine.to.up.catalog.service.api.message";
-
-
-message UpdateWine {
-  repeated string wineId = 1;
-  repeated string wineName = 2;
-}
