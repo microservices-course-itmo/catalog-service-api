@@ -54,5 +54,6 @@ public class CatalogServiceFeignConfiguration {
                 .decoder(new GsonDecoder())
                 .client(new OkHttpClient())
                 .target(WinePositionClient.class, "http://" + this.catalogServiceApiProperties.getHost());
+
     }
 }
