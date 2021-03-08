@@ -12,5 +12,5 @@ import java.util.List;
 public interface FavoriteWinePositionsClient extends FavoriteWinePositionsService {
     @RequestLine(value = "GET /position/true/favourites")
     @Headers("Content-Type: application/json")
-    List<WinePositionTrueResponse> getFavourites(@Param("ids") List<String> favouritePosition);
+    List<WinePositionTrueResponse> getFavourites(@Param("favouritePosition") List<String> favouritePosition);
 }
