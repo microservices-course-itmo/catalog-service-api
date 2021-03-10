@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface FavoriteWinePositionsClient extends FavoriteWinePositionsService {
-    @RequestLine(value = "GET /position/true/favourites")
+    @RequestLine(value = "GET /position/true/favorites/")
     @Headers("Content-Type: application/json")
     List<WinePositionTrueResponse> getFavourites(@QueryMap Map<String, List<String>> favouritePosition);
 }
