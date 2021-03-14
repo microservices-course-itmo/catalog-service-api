@@ -12,8 +12,5 @@ import java.util.Map;
 public interface WinePositionClient {
     @RequestLine(value = "GET /position/true/trueSettings")
     @Headers("Content-Type: application/json")
-    List<WinePositionTrueResponse> getAllWinePositionsTrue(@Param("page") String page,
-                                                          @Param("amount") String amount,
-                                                          @QueryMap Map<String, List<String>> sortByPair,
-                                                          @Param("filterBy") String filterBy);
+    List<WinePositionTrueResponse> getAllWinePositionsTrue(@QueryMap Map<String, List<String>> settings);
 }
