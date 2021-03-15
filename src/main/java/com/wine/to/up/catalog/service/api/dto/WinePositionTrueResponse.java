@@ -1,6 +1,7 @@
 package com.wine.to.up.catalog.service.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ public class WinePositionTrueResponse {
     private ShopResponse shop;
 
     @JsonProperty("wine")
+    @SerializedName("wine")
     private WineTrueResponse wineTrueResponse;
 
     @JsonProperty("price")
