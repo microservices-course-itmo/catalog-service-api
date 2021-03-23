@@ -3,6 +3,8 @@ package com.wine.to.up.catalog.service.api.configuration;
 
 import com.wine.to.up.catalog.service.api.CatalogServiceApiProperties;
 import com.wine.to.up.catalog.service.api.feign.CatalogServiceClient;
+import com.wine.to.up.catalog.service.api.feign.FavoriteWinePositionsClient;
+import com.wine.to.up.catalog.service.api.feign.WinePositionClient;
 import feign.Feign;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
@@ -32,5 +34,26 @@ public class CatalogServiceFeignConfiguration {
                 .decoder(new GsonDecoder())
                 .client(new OkHttpClient())
                 .target(CatalogServiceClient.class, "http://" + catalogServiceApiProperties.getHost());
+    }
+
+    @Bean
+    public FavoriteWinePositionsClient favoriteWinePositionsClient() {
+        return (FavoriteWinePositionsClient)Feign
+                .builder()
+                .encoder(new GsonEncoder())
+                .decoder(new GsonDecoder())
+                .client(new OkHttpClient())
+                .target(FavoriteWinePositionsClient.class, "http://" + this.catalogServiceApiProperties.getHost());
+    }
+
+    @Bean
+    public WinePositionClient winePositionsClient() {
+        return (WinePositionClient)Feign
+                .builder()
+                .encoder(new GsonEncoder())
+                .decoder(new GsonDecoder())
+                .client(new OkHttpClient())
+                .target(WinePositionClient.class, "http://" + this.catalogServiceApiProperties.getHost());
+
     }
 }
