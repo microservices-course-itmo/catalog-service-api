@@ -15,4 +15,8 @@ public interface FavoriteWinePositionsClient extends FavoriteWinePositionsServic
     @RequestLine(value = "GET /position/true/favourites")
     @Headers("Content-Type: application/json")
     List<WinePositionTrueResponse> getFavourites(@QueryMap Map<String, List<String>> favoritePosition);
+
+    @RequestLine(value = "GET /position/true/byId/{id}")
+    @Headers("Content-Type: application/json")
+    WinePositionTrueResponse getPositionById(@Param("id") String id);
 }
