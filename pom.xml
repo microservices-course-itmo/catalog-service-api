@@ -19,6 +19,7 @@
         <spring.boot.version>2.3.1.RELEASE</spring.boot.version>
 
         <protobuf-plugin.version>3.1.0.1</protobuf-plugin.version>
+        <py.location>target/python</py.location>
     </properties>
 
     <dependencies>
@@ -100,10 +101,54 @@
                             <inputDirectories>
                                 <include>src/main/java</include>
                             </inputDirectories>
+                            <outputTargets>
+                                <outputTarget>
+                                    <type>python</type>
+                                    <outputDirectory>target/python</outputDirectory>
+                                </outputTarget>
+                            </outputTargets>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.gmaven</groupId>
+                <artifactId>groovy-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+
+                    </execution>
+                </executions>
+                <configuration>
+                    <source>
+                        def repo_url = "http://77.234.215.138:18082/artifactory/test"
+                        def repo_id = "test"
+
+                        new File("${py.location}").eachFile() { file ->
+                            serviceName = file.name.split("\\.")[0]
+
+                            log.info("Deploying ${file} ${serviceName}:py:${project.version} to ${repo_id}")
+
+                            execString = "mvn -s settings.xml deploy:deploy-file -Dfile=${file} -Durl=${repo_url} -DrepositoryId=${repo_id} -DgroupId=${project.artifactId} -DartifactId=${serviceName} -Dversion=${project.version} -DuniqueVersion=false -Dclassifier=_pb2"
+                            def proc = execString.execute()
+                            proc.waitFor()
+
+                            err = proc.err.text
+                            if (err != null &amp;&amp; err.length() > 0) {
+                                log.error(err)
+//                                fail("Deployment failed for ${serviceName}:py:${project.version} to ${repo_id}.  \n Run in verbose mode for full error.")
+                            } else {
+                                log.info("Successfully deployed ${serviceName}:py:${project.version} to ${repo_id}")
+                            }
+                        }
+                    </source>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 </project>
